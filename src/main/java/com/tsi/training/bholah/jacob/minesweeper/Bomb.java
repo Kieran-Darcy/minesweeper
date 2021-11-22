@@ -6,15 +6,20 @@ public class Bomb extends Tile
 
     ////constructors////
 
-    public Bomb(int x, int y, boolean revealstate, boolean flagstate) {
+    public Bomb(int x, int y, boolean revealstate, boolean flagstate)
+    {
         super(9, x, y, revealstate, flagstate);
     }
+
+
     ////methods////
-    public void reveal(int position)
+    public void reveal(int x, int y)
     {
         // want this to show a bomb was hit
         System.out.println("that was a bomb");
         System.out.println("you hit a bomb the game is over");
     }
+
+
 
 }

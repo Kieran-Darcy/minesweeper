@@ -9,7 +9,7 @@ public class Empty extends Tile
         super(value, x, y, revealstate, flagstate);
     }
     ////methods////
-    public void reveal(int position)
+    public void reveal(int x,int y)
     {
         // want this to switch from ? to actually value in the array and display it
         System.out.println("that was an empty space");
