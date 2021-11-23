@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">minesweeper</a> &gt; <a href="index.source.html" class="el_package">com.tsi.training.bholah.jacob.minesweeper</a> &gt; <span class="el_source">Tile.java</span></div><h1>Tile.java</h1><pre class="source lang-java linenums">package com.tsi.training.bholah.jacob.minesweeper;
+
+public abstract class Tile {
+    /////attributes////
+    private int value;// if the tile is a bomb or number
+    private int x, y;// where on the board the tile is
+    private boolean revealstate;// if the tile is revealed or not
+    private boolean flagstate;// if the tile is revealed or not
+
+    ////constructors////
+<span class="fc" id="L11">    public Tile(int value, int x, int y, boolean revealstate, boolean flagstate) {</span>
+<span class="fc" id="L12">        this.value = value;</span>
+<span class="fc" id="L13">        this.x = x;</span>
+<span class="fc" id="L14">        this.y = y;</span>
+<span class="fc" id="L15">        this.revealstate = revealstate;</span>
+<span class="fc" id="L16">        this.flagstate = flagstate;</span>
+<span class="fc" id="L17">    }</span>
+
+    ////methods////
+    public abstract void reveal(int x, int y);
+
+    public void flag(int position) {
+        // if the state of the tile is unrevealed then a flag can be placed
+<span class="nc" id="L24">        System.out.println(x + y + &quot;was flagged&quot;);</span>
+<span class="nc" id="L25">    }</span>
+
+    public void unflag(int position) {
+        // if the tile is flagged then it can be unflaged
+<span class="nc" id="L29">        System.out.println(x + y + &quot;was unflaged&quot;);</span>
+<span class="nc" id="L30">    }</span>
+
+
+    @Override
+    public String toString() // sets a deeptostring for the Tile
+    {
+<span class="nc" id="L36">        return &quot;Tile{&quot; +</span>
+                &quot;value=&quot; + value +
+                &quot;, x=&quot; + x +
+                &quot;, y=&quot; + y +
+                &quot;, revealstate=&quot; + revealstate +
+                &quot;, flagstate=&quot; + flagstate +
+                '}';
+    }
+
+    public int getvalue() {
+<span class="fc" id="L46">        return value;</span>
+    }
+
+    public void setBreed(int value) {
+<span class="nc" id="L50">        this.value = value;</span>
+<span class="nc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -29,7 +29,6 @@ public abstract class Tile {
         System.out.println(x + y + "was unflaged");
     }
 
-
     @Override
     public String toString() // sets a deeptostring for the Tile
     {
@@ -42,11 +41,9 @@ public abstract class Tile {
                 '}';
     }
 
-    public int getvalue() {
+    public int getvalue(int x, int y) {
         return value;
     }
 
-    public void setBreed(int value) {
-        this.value = value;
-    }
+    //public void setBreed(int value) {this.value = value;}
 }

@@ -13,11 +13,11 @@ public class Bomb extends Tile
 
 
     ////methods////
-    public void reveal(int x, int y)
-    {
+    public void reveal(int x, int y){
+    //System.out.println(getvalue());
         // want this to show a bomb was hit
-        System.out.println("that was a bomb");
-        System.out.println("you hit a bomb the game is over");
+       // System.out.println("that was a bomb");
+        //System.out.println("you hit a bomb the game is over");
     }
 
 
