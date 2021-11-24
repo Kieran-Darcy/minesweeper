@@ -1,5 +1,7 @@
 package com.tsi.training.bholah.jacob.minesweeper;
+
 import com.tsi.training.bholah.jacob.minesweeper.Tile;
+
 import java.util.Arrays;
 
 public class Board {
@@ -8,42 +10,70 @@ public class Board {
     Tile[][] board = new Tile[10][10];//2d array of tile objects
     public int length = board.length;
     public int width = board[0].length;
-    public int numberofbombs=5;
 
     ////constructors////
 
     public Board() {
-        int bombx;
-        int bomby;
-        int i;
-        int j;
+        populateBoard();
+        setValues();
+    }
 
-        for(i=0;i<length;i+=1)
-        {
-        for(j=0;j<width;j+=1)
-        {
-            board[i][j] = new Empty(0,i,j,false,false);//placing emptys into the board
-        }
-        }
 
-        for (i=0;i<numberofbombs;i+=1) {
-            bombx = (int) (Math.random() * 10);
-            bomby = (int) (Math.random() * 10);
+    /////methods//////
 
-            board[bombx][bomby] = new Bomb(bombx, bomby, false, false);//placing a bomb in the array(on the board)
+    // populates the board with empty tiles
+    public void populateBoard() {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++) {
+                board[i][j] = Math.random() > 0.1 ? new Empty(0, i, j, true, false) : new Bomb(i, j, true, false);
+            }
         }
     }
-    /////method//////
-    public int getlength(){return length;}
-    public int getwidth(){return width;}
 
-    public void reveal (int x, int y) {}
+    public void setValues() {
+        int bombCount = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j].getValue()==9) continue;
+                if (i == 0) {                                               //top
+                    if (j == 0) {                                           //top left
+                        bombCount += board[i][j+1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j+1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j].getValue()==9 ? 1 : 0;
+                    } else if (j == 9) {                                    //top right
+                        bombCount += board[i][j-1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j-1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j].getValue()==9 ? 1 : 0;
+                    } else {                                                //top middle
+                        bombCount += board[i][j-1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j-1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j].getValue()==9 ? 1 : 0;
+                        bombCount += board[i+1][j+1].getValue()==9 ? 1 : 0;
+                        bombCount += board[i][j+1].getValue()==9 ? 1 : 0;
+                    }
+                } else if (i == 9) {                                        //bottom
+                    if (j == 0) {                                           //bottom left
+
+                    } else if (j == 9) {                                    //bottom right
+
+                    } else {
+
+                    }
+                }
+            }
+        }
+    }
+
+    public void reveal(int x, int y) {
+    }
 
     @Override// sets a deeptostring for the board
     public String toString() {
-        return "Board{" +
-        "board=" + Arrays.deepToString(board) +
-                '}';
+        String str = "";
+        for (Tile[] row : board) {
+            str = str.concat(Arrays.toString(row) + "\n");
+        }
+        return str;
 
 
     }

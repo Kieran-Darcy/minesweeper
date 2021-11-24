@@ -32,16 +32,10 @@ public abstract class Tile {
     @Override
     public String toString() // sets a deeptostring for the Tile
     {
-        return "Tile{" +
-                "value=" + value +
-                ", x=" + x +
-                ", y=" + y +
-                ", revealstate=" + revealstate +
-                ", flagstate=" + flagstate +
-                '}';
+        return revealstate ? value+"" : "?";
     }
 
-    public int getvalue(int x, int y) {
+    public int getValue() {
         return value;
     }
 
